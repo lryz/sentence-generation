@@ -84,4 +84,17 @@ def create_all_words_dict(synDict, styGroupsDict):
                     allWordsDict[word].append(group)
 
     return allWordsDict
-    
+
+
+def create_one_txt_from_brat(brat_path, output_file_path):
+    data = []
+    for filename in glob.glob(os.path.join(brat_path, '*.txt')) :
+        with open(os.path.join(os.getcwd(), filename), 'r') as file_txt :
+            data+=file_txt.readlines()
+
+
+    f = open(output_file_path, "a")
+    for line in data :
+        f.write(line)
+    f.close()
+    return 0
